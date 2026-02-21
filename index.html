@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modifier Trial Scheduler</title>
   <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M8 0h16l8 16-8 16H8L0 16z' fill='%2300d4ff'/></svg>">
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%2300d4ff'>⬡</text></svg>">
   <link
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
@@ -76,14 +76,14 @@
     }
 
     .logo-hex {
-      width: 32px;
-      height: 32px;
-      background: var(--accent);
-      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      font-size: 28px;
+      color: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 15px var(--accent-glow);
+      text-shadow: 0 0 12px var(--accent-glow);
+      line-height: 1;
+      font-family: 'Orbitron', sans-serif;
     }
 
     .logo-text {
@@ -526,7 +526,7 @@
 
   <header>
     <div class="logo">
-      <div class="logo-hex"></div>
+      <div class="logo-hex">⬡</div>
       <div class="logo-text">
         <div class="logo-title">Modifier Scheduler</div>
         <div class="logo-sub">Rotation Intelligence v2.1</div>
