@@ -345,6 +345,15 @@
       color: var(--accent);
       border: 1px solid rgba(0, 212, 255, 0.1);
       text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mod-tag:hover {
+      background: var(--accent);
+      color: var(--bg);
+      box-shadow: 0 0 10px var(--accent-glow);
     }
 
     .time-cell {
@@ -529,7 +538,7 @@
       <div class="logo-hex">⬡</div>
       <div class="logo-text">
         <div class="logo-title">Modifier Scheduler</div>
-        <div class="logo-sub">Rotation Intelligence v2.1</div>
+        <div class="logo-sub">Rotation Intelligence</div>
       </div>
     </div>
     <div class="clock">
@@ -586,6 +595,22 @@
       "Flying", "Jailed", "Exploding", "Inflation",
       "Commited", "Hidden", "Broke", "Healthy"
     ];
+
+    const WIKI_URLS = {
+      "Hidden": "https://tds.fandom.com/wiki/Hidden_Enemies",
+      "Glass": "https://tds.fandom.com/wiki/Glass",
+      "Jailed": "https://tds.fandom.com/wiki/Jailed_Towers_(Modifier)",
+      "Exploding": "https://tds.fandom.com/wiki/Exploding_Enemies",
+      "Commited": "https://tds.fandom.com/wiki/Committed",
+      "Healthy": "https://tds.fandom.com/wiki/Healthy_Enemies",
+      "Flying": "https://tds.fandom.com/wiki/Flying_Enemies",
+      "Speedy": "https://tds.fandom.com/wiki/Speedy_Enemies",
+      "Limit": "https://tds.fandom.com/wiki/Limitation_Makes_Creativity",
+      "Fog": "https://tds.fandom.com/wiki/Fog",
+      "Broke": "https://tds.fandom.com/wiki/Broke",
+      "Quarantine": "https://tds.fandom.com/wiki/Quarantine",
+      "Inflation": "https://tds.fandom.com/wiki/Inflation"
+    };
 
     // Use UTC for the anchor time to ensure global synchronization.
     // 19:00 GMT+7 is 12:00 UTC.
@@ -734,8 +759,9 @@
         const cdValue = formatCountdown(time, now);
         const isLive = cdValue === "LIVE";
 
+        const wikiUrl = WIKI_URLS[mod] || "#";
         tr.innerHTML = `
-      <td><span class="mod-tag">${mod}</span></td>
+      <td><a href="${wikiUrl}" target="_blank" class="mod-tag">${mod}</a></td>
       <td class="time-cell">${formatDateTime(time)}</td>
       <td class="countdown-cell">${isLive ? 'ACTIVE' : cdValue}</td>
       <td>
