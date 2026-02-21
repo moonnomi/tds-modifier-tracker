@@ -1,7 +1,7 @@
 # ⬡ TDS Modifier Tracker
 
 <p align="center">
-  <img src="preview.png" width="800" alt="TDS Modifier Tracker Preview">
+  <img src="preview1.png" width="800" alt="TDS Modifier Tracker Preview">
 </p>
 
 A premium, cyberpunk-themed HTML-based GUI designed to track current and future modifier trials in the Roblox experience **Tower Defense Simulator (TDS)**.
