@@ -5,8 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modifier Trial Scheduler</title>
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M8 0h16l8 16-8 16H8L0 16z' fill='%2300d4ff'/></svg>">
   <link
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
@@ -542,7 +540,7 @@
     <aside>
       <div class="sidebar-header">
         <div class="sidebar-label">Target Filters</div>
-        <div id="toggle-all">Select/Clear All</div>
+        <div id="toggle-all">Selection Logic</div>
       </div>
       <div class="mod-list" id="mod-list"></div>
     </aside>
@@ -587,9 +585,7 @@
       "Commited", "Hidden", "Broke", "Healthy"
     ];
 
-    // Use UTC for the anchor time to ensure global synchronization.
-    // 19:00 GMT+7 is 12:00 UTC.
-    const ANCHOR_TIME = new Date(Date.UTC(2026, 1, 20, 12, 0, 0));
+    const ANCHOR_TIME = new Date(2026, 1, 20, 19, 0, 0);
     const ANCHOR_MODIFIER = "Exploding";
     const INTERVAL_HOURS = 3;
     const MAX_PER_MOD = 5;
@@ -617,14 +613,12 @@
     }
 
     function getRotationData(now) {
-      // Comparison of Date objects uses UTC timestamps, so this is timezone-independent
       const diffMs = now - ANCHOR_TIME;
       const slotMs = INTERVAL_HOURS * 3600 * 1000;
       const totalSlots = Math.floor(diffMs / slotMs);
       const anchorIdx = MODIFIERS.indexOf(ANCHOR_MODIFIER);
       const currentIdx = ((anchorIdx + totalSlots) % MODIFIERS.length + MODIFIERS.length) % MODIFIERS.length;
       const msIntoSlot = diffMs % slotMs;
-      // currentStart in local time
       const currentStart = new Date(now - msIntoSlot);
       return { currentIdx, currentStart };
     }
@@ -756,13 +750,9 @@
       const m = String(now.getMinutes()).padStart(2, '0');
       const s = String(now.getSeconds()).padStart(2, '0');
 
-      // Get timezone offset string (e.g., GMT+0700)
-      const tzMatch = now.toTimeString().match(/([A-Z]+[\+-]\d+)/);
-      const tzString = tzMatch ? tzMatch[1] : "";
-
       document.getElementById('clock-time').textContent = `${h}:${m}:${s}`;
       document.getElementById('clock-date').textContent =
-        `${days[now.getDay()]} // ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()} // ${tzString}`;
+        `${days[now.getDay()]} // ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
     }
 
     // Init
