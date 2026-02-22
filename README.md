@@ -23,8 +23,12 @@ A premium, cyberpunk-themed HTML-based GUI designed to track current and future 
 
 ## Usage
 
-Simply open `index.html` in any modern web browser. 
+You can access the tracker in two ways:
 
+1. **Live Website (Recommended)**: Visit [tds-modifier-tracker.pages.dev](https://tds-modifier-tracker.pages.dev/) for the easiest experience.
+2. **Local File**: Simply open `index.html` in any modern web browser.
+
+### Getting Started:
 1. **Clock**: The top-right shows your current local time and timezone offset.
 2. **Filters**: Use the sidebar to toggle specific modifiers you want to monitor.
 3. **Timeline**: The main table shows exactly when your selected modifiers will go live, including a live countdown.
