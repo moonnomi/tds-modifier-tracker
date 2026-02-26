@@ -375,6 +375,7 @@
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
+      text-decoration: none;
     }
 
     .status-badge.upcoming {
@@ -387,6 +388,16 @@
       background: rgba(0, 255, 136, 0.1);
       color: var(--live);
       border: 1px solid rgba(0, 255, 136, 0.2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .status-badge.live:hover {
+      background: rgba(0, 255, 136, 0.2);
+      color: #00ffa2;
+      border-color: rgba(0, 255, 136, 0.4);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+      transform: translateY(-1px);
     }
 
     .live-dot {
@@ -766,7 +777,7 @@
       <td class="countdown-cell">${isLive ? 'ACTIVE' : cdValue}</td>
       <td>
         ${isLive
-            ? `<span class="status-badge live" data-short="LIVE"><div class="live-dot"></div><span>Live Now</span></span>`
+            ? `<a href="roblox://placeId=3260590327" class="status-badge live" data-short="LIVE"><div class="live-dot"></div><span>Live Now</span></a>`
             : `<span class="status-badge upcoming" data-short="UPCM"><span>Upcoming</span></span>`}
       </td>`;
         tbody.appendChild(tr);
